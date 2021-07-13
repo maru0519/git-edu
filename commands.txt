@@ -1,0 +1,57 @@
+echo('‰‰K1################################################')
+
+mkdir test-git
+cd test-git
+mkdir test-local
+cd test-local
+git init
+
+echo('‰‰K2################################################')
+
+echo 'test1' >> test1.txt
+git status
+git add test1.txt
+git status
+
+echo('‰‰K3################################################')
+
+git commit -m "first commit"
+git log
+git status
+echo 'test1' >> test1.txt
+cat test1.txt
+git status
+git add test1.txt
+git status
+git commit -m "second commit"
+git log
+
+echo('‰‰K4################################################')
+
+git reset --soft HEAD^
+git log
+git status
+cat test1.txt
+git commit -m "second commit"
+git reset --mixed HEAD^
+git status
+git add test1.txt
+git reset HEAD
+git add test1.txt
+git commit -m "second commit"
+git reset --hard HEAD^
+git log
+git status
+cat test1.txt
+
+echo('‰‰K5################################################')
+
+git rm test1.txt
+git status
+ls
+**
+git rm --cached test1.txt 
+git status
+ls
+**
+
