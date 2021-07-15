@@ -1,4 +1,4 @@
-echo('‰‰K1################################################')
+echo '1################################################'
 
 mkdir test-git
 cd test-git
@@ -6,14 +6,14 @@ mkdir test-local
 cd test-local
 git init
 
-echo('‰‰K2################################################')
+echo '2################################################'
 
 echo 'test1' >> test1.txt
 git status
 git add test1.txt
 git status
 
-echo('‰‰K3################################################')
+echo '3################################################'
 
 git commit -m "first commit"
 git log
@@ -26,7 +26,7 @@ git status
 git commit -m "second commit"
 git log
 
-echo('‰‰K4################################################')
+echo '4################################################'
 
 git reset --soft HEAD^
 git log
@@ -44,14 +44,54 @@ git log
 git status
 cat test1.txt
 
-echo('‰‰K5################################################')
+echo '5################################################'
 
-git rm test1.txt
+
+
+echo '6################################################'
+
+git branch
+git checkout -b dev1
+git branch
+git log
+
+echo '7################################################'
+
+echo 'test2' > test2.txt
 git status
-ls
-**
-git rm --cached test1.txt 
+git add .
+git commit -m "create test2 and append test1 from dev1"
+git checkout master
 git status
-ls
-**
+git merge dev1
+git log --graph
+
+echo '8a################################################'
+
+git checkout dev1
+echo 'test2 from dev1' > test2.txt
+git add .
+git commit -m "append msg to test2.txt in dev1"
+git checkout master
+echo 'test2 from master' > test2.txt
+git add .
+git commit -m "append msg to test2.txt in master"
+git merge dev1
+
+echo '8b################################################'
+
+vim test2.txt
+cat test2.txt
+git status
+git add test2.txt
+git commit -m "fix conflict in test2.txt"
+git log --all --graph
+
+
+
+
+
+
+
+
 
